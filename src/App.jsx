@@ -23,10 +23,10 @@ const App = () => {
 
       <main className="flex-grow">
         {/* Hero Section */}
-        <section id="home" className="relative px-4 pt-4 md:pt-0">
+        <section id="home" className="relative px-4 pt-8 md:pt-0">
           <div
             className="
-      max-w-7xl mx-auto
+      max-w-full mx-auto
       grid grid-cols-1 lg:grid-cols-2
       bg-[#FBF7F2]
       rounded-2xl
@@ -148,7 +148,7 @@ const App = () => {
 
         {/* Features Section */}
         <section id="features" className="py-16 px-6 bg-white">
-          <div className="max-w-7xl mx-auto space-y-10">
+          <div className="max-w-full mx-auto space-y-10">
             {/* Heading */}
             <div className="text-center space-y-2">
               {/* Badge */}
@@ -281,7 +281,7 @@ const App = () => {
 
         {/* Why Us Section */}
         <section id="impact" className="px-0">
-          <div className="max-w-7xl mx-auto space-y-10 py-10 px-6 bg-[#F3F3F3] border-2 border-[#E9E2D84D]">
+          <div className="max-w-full mx-auto space-y-10 py-10 px-6 bg-[#F3F3F3] border-2 border-[#E9E2D84D]">
             {/* Heading */}
             <div className="text-center space-y-2">
               <div className=" inline-flex items-center gap-2 px-4 py-1 bg-[#E9E2D8] rounded-full text-xs font-semibold whitespace-nowrap max-[360px]:text-[10px] max-[360px]:px-3">
@@ -378,7 +378,7 @@ const App = () => {
 
         {/* Launching Soon Section */}
         <section id="waitlist" className="py-10 px-6 overflow-hidden">
-          <div className="max-w-7xl mx-auto space-y-8">
+          <div className="max-w-full mx-auto space-y-8">
             {/* Heading */}
             <div className="text-center space-y-2">
               <div className="inline-flex items-center gap-2 px-4 py-1 bg-[#E9E2D8] rounded-full text-xs font-medium whitespace-nowrap max-[360px]:text-[10px] max-[360px]:px-3 ">
