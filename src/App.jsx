@@ -127,7 +127,7 @@ const App = () => {
             </div>
 
             {/* DESKTOP IMAGE ONLY */}
-            <div className="hidden lg:flex justify-end items-end pr-6">
+            <div className="hidden lg:flex justify-end items-end pr-">
               <img
                 src={handImage}
                 alt="Construction App Interface"
