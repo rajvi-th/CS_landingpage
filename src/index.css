@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #C4431B;
+  --color-primary-dark: #A33716;
+  --color-surface: #F7F3EF;
+  --color-text-main: #2D2D2D;
+  --color-text-light: #5F5F5F;
+
+  /* ✅ THIS IS THE KEY FIX */
+  --font-sans: "DM Sans", sans-serif;
+}
+
+
+
+:root {
+  background-color: #FDFCFB;
+  color: var(--color-text-main);
+  font-family: var(--font-family-body);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-family-display);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.hero-gradient {
+  background: radial-gradient(circle at top right, #F9F5EF 0%, #F9F5EF 100%);
+}
