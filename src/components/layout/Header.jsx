@@ -81,23 +81,23 @@ const Header = () => {
                     setIsMenuOpen(false);
                   }}
                   className={`
-                    group flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium
+                    flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium
                     transition-all duration-200
                     ${
                       isActive
                         ? "bg-[#F9F6F3] text-black"
-                        : "text-[#5F5F5F] hover:bg-[#F9F6F3] hover:text-black"
+                        : "text-[#5F5F5F]"
                     }
                   `}
                 >
                   <span
                     className={`
-                      w-1.5 h-1.5 rounded-full
+                      w-1.5 h-1.5 rounded-full bg-[#C4431B]
                       transition-opacity duration-200
                       ${
                         isActive
-                          ? "bg-[#C4431B] opacity-100"
-                          : "bg-[#C4431B] opacity-0 group-hover:opacity-100"
+                          ? "opacity-100"
+                          : "opacity-0"
                       }
                     `}
                   />
