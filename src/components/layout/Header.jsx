@@ -6,12 +6,20 @@ const Header = () => {
   const [activeItem, setActiveItem] = useState("Home");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const scrollToSection = (e, id) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   const navItems = [
-    { label: "Home", href: "#home" },
-    { label: "Features", href: "#features" },
-    { label: "Impact", href: "#impact" },
-    { label: "Preview", href: "#preview" },
-    { label: "Waitlist", href: "#waitlist" },
+    { label: "Home", id: "home" },
+    { label: "Features", id: "features" },
+    { label: "Impact", id: "impact" },
+    { label: "Preview", id: "preview" },
+    { label: "Waitlist", id: "waitlist" },
   ];
 
   return (
@@ -56,7 +64,10 @@ const Header = () => {
           </button>
 
           {/* Logo & Brand */}
-          <div className="flex items-center gap-2 cursor-pointer lg:order-none">
+          <div 
+            className="flex items-center gap-2 cursor-pointer lg:order-none"
+            onClick={(e) => scrollToSection(e, "home")}
+          >
             <img
               src={logo}
               alt="Construction Saarthi Logo"
@@ -75,8 +86,9 @@ const Header = () => {
               return (
                 <a
                   key={item.label}
-                  href={item.href}
-                  onClick={() => {
+                  href={`#${item.id}`}
+                  onClick={(e) => {
+                    scrollToSection(e, item.id);
                     setActiveItem(item.label);
                     setIsMenuOpen(false);
                   }}
@@ -112,6 +124,7 @@ const Header = () => {
             <Button
               variant="primary"
               className="px-4 py-1.5 text-xs lg:text-sm lg:px-6 lg:py-2"
+              onClick={(e) => scrollToSection(e, "waitlist")}
               icon={
                 <svg
                   width="14"
@@ -140,8 +153,9 @@ const Header = () => {
                 {navItems.map((item) => (
                   <a
                     key={item.label}
-                    href={item.href}
-                    onClick={() => {
+                    href={`#${item.id}`}
+                    onClick={(e) => {
+                      scrollToSection(e, item.id);
                       setActiveItem(item.label);
                       setIsMenuOpen(false);
                     }}

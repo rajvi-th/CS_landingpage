@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import Button from "./components/common/Button";
+import SuccessModal from "./components/common/SuccessModal";
 
 // Assets
 import siteImage from "./assets/icon/Sitee.svg";
@@ -18,6 +19,22 @@ import AeroIcon from "./assets/icon/Aero.svg";
 import handdImage from "./assets/icon/Handd.svg";
 
 const App = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formData, setFormData] = useState({ email: "" });
+
+  const scrollToSection = (e, id) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    setIsModalOpen(true);
+  };
+
   return (
     <div className="min-h-screen flex flex-col font-sans">
       <Header />
@@ -71,6 +88,7 @@ const App = () => {
                 <Button
                   variant="primary"
                   className="text-base font-medium"
+                  onClick={(e) => scrollToSection(e, "waitlist")}
                   icon={
                     <svg
                       width="16"
@@ -423,31 +441,37 @@ const App = () => {
               {/* RIGHT : FLOATING FORM (OUTSIDE IMAGE) */}
               <div className="relative lg:-ml-50 flex items-center">
                 <div className=" relative w-full max-w-full sm:max-w-full md:max-w-full lg:max-w-md bg-[#EBEAE8] rounded-2xl shadow-sm border border-[#EBEAE8] px-6 py-8 md:px-8 md:py-6 2xl:py- overflow-hidden mx-auto">
-                  <form className="2xl:space-y-6">
+                  <form className="2xl:space-y-6" onSubmit={handleFormSubmit}>
                     {/* Name */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label className="text-sm text-black font-medium">
                           First Name
                         </label>
-                        <input className="w-full border-b border-[#817794] 2xl:mt-4 mb-4 focus:border-[#C4431B] outline-none text-sm bg-transparent" />
+                        <input required className="w-full border-b border-[#817794] 2xl:mt-4 mb-4 focus:border-[#C4431B] outline-none text-sm bg-transparent" />
                       </div>
                       <div>
                         <label className="text-sm text-black font-medium">
                           Last Name
                         </label>
-                        <input className="w-full border-b border-[#817794] 2xl:mt-4 mb-4 focus:border-[#C4431B] outline-none text-sm bg-transparent" />
+                        <input required className="w-full border-b border-[#817794] 2xl:mt-4 mb-4 focus:border-[#C4431B] outline-none text-sm bg-transparent" />
                       </div>
                     </div>
-
+ 
                     {/* Email */}
                     <div>
                       <label className="text-sm text-black font-medium">
                         Email address
                       </label>
-                      <input className="w-full border-b border-[#817794] 2xl:mt-4 mb-4 focus:border-[#C4431B] outline-none text-sm bg-transparent" />
+                      <input 
+                        required 
+                        type="email" 
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className="w-full border-b border-[#817794] 2xl:mt-4 mb-4 focus:border-[#C4431B] outline-none text-sm bg-transparent" 
+                      />
                     </div>
-
+ 
                     {/* Message */}
                     <div>
                       <label className="text-sm text-black font-medium">
@@ -459,7 +483,7 @@ const App = () => {
                         className="w-full border-b border-[#817794] 2xl:mt-4 mt-1 focus:border-[#C4431B] outline-none text-sm resize-none bg-transparent placeholder:text-gray-400"
                       />
                     </div>
-
+ 
                     {/* Button */}
                     <div className="relative mt-6 lg:mt-14 2xl:mt-25 flex justify-center md:justify-end">
                       <img
@@ -467,9 +491,10 @@ const App = () => {
                         alt="Arrow"
                         className="hidden lg:block absolute right-40"
                       />
-
+ 
                       <Button
                         variant="primary"
+                        type="submit"
                         className="px-6 relative z-10 w-full md:w-auto"
                         icon={
                           <svg
@@ -499,6 +524,11 @@ const App = () => {
       </main>
 
       <Footer />
+      <SuccessModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        email={formData.email}
+      />
     </div>
   );
 };
