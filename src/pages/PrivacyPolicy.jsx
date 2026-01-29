@@ -13,7 +13,7 @@ const PrivacyPolicy = () => {
 
       <main className="flex-grow py-10 px-4 lg:px-14 2xl:px-27">
         <div className="max-w-5xl mx-auto">
-          <div className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-lg">
+          <div className="bg-card rounded-2xl border border-[#E9E2D84D] p-8 md:p-12 shadow-sm">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
               Privacy Policy
             </h1>
