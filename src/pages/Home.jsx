@@ -73,7 +73,7 @@ const Home = () => {
               </h1>
 
               {/* Description */}
-              <p className="mt-4 2xl:mt-10 text-sm max-w-2xl 2xl:max-w-6xl 2xl:text-lg leading-relaxed text-[#4A4A4A]">
+              <p className="mt-4 2xl:mt-10 text-xs max-w-2xl 2xl:max-w-6xl 2xl:text-lg leading-relaxed text-[#4A4A4A]">
                 Plan projects, track materials, manage labor, control finances,
                 and calculate costs — all in one simple, AI-powered construction
                 management platform built for real site work.
@@ -168,7 +168,7 @@ const Home = () => {
             <div className="text-center space-y-2">
               {/* Badge */}
               <div
-                className="inline-flex items-center gap-2 px- py-1 bg-[#E9E2D8] rounded-full text-xs 2xl:text-xl font-semibold max-[380px]:text-[9px] max-[380px]:px-3">
+                className="inline-flex items-center gap-2 px-4 py-1 bg-[#E9E2D8] rounded-full text-xs 2xl:text-xl font-semibold max-[380px]:text-[9px] max-[380px]:px-3">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#B02E0C]" />
                 Shift from generic “AI” claims to real, site-level value.
               </div>
