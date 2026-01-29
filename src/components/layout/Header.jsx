@@ -1,17 +1,30 @@
 import React, { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import Button from "../common/Button";
 import logo from "../../assets/icon/Cslogo.svg";
 
 const Header = () => {
   const [activeItem, setActiveItem] = useState("Home");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
 
-  const scrollToSection = (e, id) => {
+  const handleNavigation = (e, id) => {
     e.preventDefault();
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    
+    if (isHomePage) {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+      // Map id to label roughly or just keep current active logic
+      const item = navItems.find(i => i.id === id);
+      if(item) setActiveItem(item.label);
+    } else {
+      navigate("/", { state: { scrollTo: id } });
     }
+    setIsMenuOpen(false);
   };
 
   const navItems = [
@@ -66,7 +79,7 @@ const Header = () => {
           {/* Logo & Brand */}
           <div 
             className="flex items-center gap-2 cursor-pointer lg:order-none"
-            onClick={(e) => scrollToSection(e, "home")}
+            onClick={(e) => handleNavigation(e, "home")}
           >
             <img
               src={logo}
@@ -81,17 +94,13 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-2">
             {navItems.map((item) => {
-              const isActive = activeItem === item.label;
+              const isActive = isHomePage && activeItem === item.label;
 
               return (
                 <a
                   key={item.label}
                   href={`#${item.id}`}
-                  onClick={(e) => {
-                    scrollToSection(e, item.id);
-                    setActiveItem(item.label);
-                    setIsMenuOpen(false);
-                  }}
+                  onClick={(e) => handleNavigation(e, item.id)}
                   className={`
                     flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium
                     transition-all duration-200
@@ -124,7 +133,7 @@ const Header = () => {
             <Button
               variant="primary"
               className="px-4 py-1.5 text-xs lg:text-sm lg:px-6 lg:py-2"
-              onClick={(e) => scrollToSection(e, "waitlist")}
+              onClick={(e) => handleNavigation(e, "waitlist")}
               icon={
                 <svg
                   width="14"
@@ -154,15 +163,11 @@ const Header = () => {
                   <a
                     key={item.label}
                     href={`#${item.id}`}
-                    onClick={(e) => {
-                      scrollToSection(e, item.id);
-                      setActiveItem(item.label);
-                      setIsMenuOpen(false);
-                    }}
+                    onClick={(e) => handleNavigation(e, item.id)}
                     className={`
                       px-4 py-3 rounded-xl text-sm font-medium transition-colors
                       ${
-                        activeItem === item.label
+                        isHomePage && activeItem === item.label
                           ? "bg-[#F9F6F3] text-black"
                           : "text-[#5F5F5F] hover:bg-gray-50"
                       }

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import logo from "../../assets/icon/Cslogo.svg";
 import CallIcon from "../../assets/icon/Call.svg";
 import EmailIcon from "../../assets/icon/Email.svg";
@@ -54,18 +55,18 @@ const Footer = () => {
             </p>
 
             <div className="flex gap-6 ">
-              <a
-                href="#"
+              <Link
+                to="/privacy-policy"
                 className="text-[10px] md:text-xs 2xl:text-lg hover:text-[#B02E0C] transition"
               >
                 Privacy Policy
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/terms-and-conditions"
                 className="text-[10px] md:text-xs 2xl:text-lg hover:text-[#B02E0C] transition"
               >
                 Terms of Service
-              </a>
+              </Link>
             </div>
           </div>
         </div>
